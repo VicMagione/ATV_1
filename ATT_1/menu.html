@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu - OdinLine</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <div class="menu-container">
+    <h2>Bem-vindo, <span id="nomeUsuario"></span>!</h2>
+    <div class="menu-buttons">
+      <button onclick="irPara('alerta.html')">Alerta de Preço</button>
+      <button onclick="irPara('compras.html')">Minhas Compras</button>
+      <button onclick="logout()">Sair</button>
+    </div>
+  </div>
+
+  <script>
+    // Carrega dados do usuário e exibe o nome
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    if (!usuario) {
+      window.location.href = 'index.html';
+    } else {
+      document.getElementById('nomeUsuario').textContent = usuario.nome;
+    }
+
+    function irPara(pagina) {
+      window.location.href = pagina;
+    }
+
+    function logout() {
+      localStorage.removeItem('usuario');
+      window.location.href = 'index.html';
+    }
+  </script>
+
+</body>
+</html>

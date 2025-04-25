@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alerta de Preço</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Cadastro de Alerta</h2>
+    <input type="number" id="produtoId" placeholder="ID do Produto" required />
+    <input type="number" id="valorDesejado" placeholder="Valor Desejado" required step="0.01" />
+    
+    <select id="acao">
+      <option value="notificar">Notificar</option>
+      <option value="comprar">Comprar</option>
+    </select>
+
+    <button onclick="cadastrarAlerta()">Cadastrar Alerta</button>
+    <div class="error" id="erro"></div>
+
+    <hr />
+    <h3>Alertas Ativos</h3>
+    <ul id="listaAlertas"></ul>
+    <hr />
+    <button onclick="voltar()">Votlar ao Menu</button>
+  </div>
+
+  <audio id="alertaAudio" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
+
+  <script>
+    function voltar() {
+    window.location.href = 'menu.html';
+    }
+    
+    </script>
+  <script src="/js/alerta.js"></script>
+</body>
+</html>

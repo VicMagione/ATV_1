@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minhas Compras</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Minhas Compras</h2>
+    <ul id="listaCompras"></ul>
+    <button onclick="voltar()">Voltar ao Menu</button>
+  </div>
+
+  <script>
+    const lista = document.getElementById('listaCompras');
+    const compras = JSON.parse(localStorage.getItem('compras')) || [];
+
+    if (compras.length === 0) {
+      lista.innerHTML = '<li>Nenhuma compra registrada ainda.</li>';
+    } else {
+      compras.forEach(async (compra) => {
+        try {
+          const res = await fetch(`https://api-odinline.odiloncorrea.com/produto/${compra.produtoId}`);
+          const produto = await res.json();
+
+          const li = document.createElement('li');
+          li.textContent = `${produto.descricao} - Comprado por R$ ${compra.valor}`;
+          lista.appendChild(li);
+        } catch (error) {
+          console.error('Erro ao buscar produto:', error);
+        }
+      });
+    }
+
+    function voltar() {
+      window.location.href = 'menu.html';
+    }
+  </script>
+
+</body>
+</html>
