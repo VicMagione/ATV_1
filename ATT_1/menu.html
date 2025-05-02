@@ -18,23 +18,27 @@
   </div>
 
   <script>
-    // Carrega dados do usuário e exibe o nome
-    const usuario = JSON.parse(localStorage.getItem('usuario'));
-    if (!usuario) {
-      window.location.href = 'index.html';
-    } else {
+    window.addEventListener('DOMContentLoaded', () => {
+      const usuario = JSON.parse(localStorage.getItem('usuarioAutenticado'));
+      
+      if (!usuario || !usuario.nome) {
+        window.location.href = 'index.html';
+        return;
+      }
+  
       document.getElementById('nomeUsuario').textContent = usuario.nome;
-    }
-
+    });
+  
     function irPara(pagina) {
       window.location.href = pagina;
     }
-
+  
     function logout() {
       localStorage.removeItem('usuario');
       window.location.href = 'index.html';
     }
   </script>
+
 
 </body>
 </html>

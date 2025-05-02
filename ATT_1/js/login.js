@@ -1,18 +1,41 @@
-async function autenticarUsuario() {
-    const login = document.getElementById('login').value;
-    const senha = document.getElementById('senha').value;
-    const erroDiv = document.getElementById('erro');
-    erroDiv.textContent = '';
-  
+
+async function autenticar() {
+  if ($("#formulario").valid()) {
+    
+    let login = $("#login").val();
+    let senha = $("#senha").val(); 
+
     try {
-      const response = await fetch(`https://api-odinline.odiloncorrea.com/usuario/${login}/${senha}/autenticar`);
-      if (!response.ok) throw new Error('Usuário ou senha inválidos');
-  
-      const usuario = await response.json();
-      localStorage.setItem('usuario', JSON.stringify(usuario)); // Guarda os dados do usuário
-      window.location.href = 'menu.html'; // Redireciona para a próxima página
+      let resposta = await fetch(`https://api-odinline.odiloncorrea.com/usuario/${login}/${senha}/autenticar`);
+      let usuario = await resposta.json();
+
+      if (usuario.id > 0) {
+        localStorage.setItem('usuarioAutenticado', JSON.stringify(usuario));
+        window.location.href = "menu.html";
+      } else {
+        alert("Usuário ou senha inválidos.");
+      }
+
     } catch (error) {
-      erroDiv.textContent = error.message;
+      alert("Erro ao tentar autenticar.");
     }
   }
-  
+}
+$("#formulario").validate({
+  rules: {
+    login: {
+      required: true
+    },
+    senha: {
+      required: true
+    }
+  },
+  messages: {
+    login: {
+      required: "Campo obrigatório"
+    },
+    senha: {
+      required: "Campo obrigatório"
+    }
+  }
+});

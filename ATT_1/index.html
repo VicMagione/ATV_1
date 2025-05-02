@@ -6,16 +6,36 @@
   <title>Login - OdinLine</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
-
-  <div class="login-container">
-    <h2>Login OdinLine</h2>
-    <input type="text" id="login" placeholder="Login" required />
-    <input type="password" id="senha" placeholder="Senha" required />
-    <button onclick="autenticarUsuario()">Entrar</button>
-    <div class="error" id="erro"></div>
+<body class="w-50 mx-auto">
+  <div class="container mt-4">
+    <h1 class="text-center border-bottom border-danger mb-4">Autenticação de usuário</h1>
+    <form id="formulario" action="#" method="post">
+      <fieldset>
+        <div class="row">
+          <div class="col-12">
+            <label class="form-label" for="login">Login</label>
+            <input class="form-control" id="login" name="login" type="text" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <label class="form-label" for="senha">Senha</label>
+            <input class="form-control" id="senha" name="senha" type="password" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 d-flex justify-content-end mt-3">
+            <button class="btn btn-primary" type="button" onclick="autenticar()">Entrar</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
   </div>
+</body>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/jquery.validate.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
 
-  <script src="js/login.js"></script>
 </body>
 </html>

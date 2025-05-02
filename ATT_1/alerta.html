@@ -7,10 +7,11 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-
   <div class="login-container">
     <h2>Cadastro de Alerta</h2>
-    <input type="number" id="produtoId" placeholder="ID do Produto" required />
+    <select id="selectProduto">
+      <option value="">Selecione um produto</option>
+    </select>
     <input type="number" id="valorDesejado" placeholder="Valor Desejado" required step="0.01" />
     
     <select id="acao">
@@ -28,14 +29,14 @@
     <button onclick="voltar()">Votlar ao Menu</button>
   </div>
 
-  <audio id="alertaAudio" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
 
   <script>
     function voltar() {
     window.location.href = 'menu.html';
     }
-    
-    </script>
-  <script src="/js/alerta.js"></script>
+   
+  </script>
+  <script type="text/javascript" src="/js/alerta.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
 </body>
 </html>
