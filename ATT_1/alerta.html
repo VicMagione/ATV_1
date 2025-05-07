@@ -4,39 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alerta de Preço</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/styles.css" /> <!-- CSS compartilhado -->
 </head>
 <body>
-  <div class="login-container">
-    <h2>Cadastro de Alerta</h2>
-    <select id="selectProduto">
+  <div class="alerta-container">
+    <h2 class="custom-border">Cadastro de Alerta</h2>
+    
+    <select id="selectProduto" class="form-input">
       <option value="">Selecione um produto</option>
     </select>
-    <input type="number" id="valorDesejado" placeholder="Valor Desejado" required step="0.01" />
     
-    <select id="acao">
+    <input type="number" id="valorDesejado" class="form-input" placeholder="Valor Desejado" required step="0.01" />
+    
+    <select id="acao" class="form-input">
       <option value="notificar">Notificar</option>
       <option value="comprar">Comprar</option>
     </select>
 
-    <button onclick="cadastrarAlerta()">Cadastrar Alerta</button>
+    <button class="btn-alerta" onclick="cadastrarAlerta()">Cadastrar Alerta</button>
     <div class="error" id="erro"></div>
 
     <hr />
-    <h3>Alertas Ativos</h3>
-    <ul id="listaAlertas"></ul>
-    <hr />
-    <button onclick="voltar()">Votlar ao Menu</button>
+    <h3 class="subtitulo">Alertas Ativos</h3>
+    <ul id="listaAlertas" class="lista-itens"></ul>
+    
+    <button class="btn-voltar" onclick="voltar()">Voltar ao Menu</button>
   </div>
-
 
   <script>
     function voltar() {
-    window.location.href = 'menu.html';
+      window.location.href = 'menu.html';
     }
-   
   </script>
-  <script type="text/javascript" src="/js/alerta.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script src="js/alerta.js"></script>
+  <script src="js/bootstrap.js"></script>
 </body>
 </html>
